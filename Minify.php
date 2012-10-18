@@ -30,7 +30,7 @@ class Minify {
 		} else {
 			$this->csspath = FCPATH.trim($CI->config->item('csspath'), '/');
 		}
-    }
+    	}
 	
 	public function build($type = 'js', $file = '') {
 		if ($type === 'js') $path = $this->jspath;
