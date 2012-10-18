@@ -20,12 +20,12 @@ class Minify {
 	public function __construct($params = array()) {
 		$CI =& get_instance();
 		
-        if (isset($params['jspath'])) {
+		if (isset($params['jspath'])) {
 			$this->jspath = FCPATH.trim($params['jspath'], '/');
 		} else {
 			$this->jspath = FCPATH.trim($CI->config->item('jspath'), '/');
 		}
-        if (isset($params['csspath'])) {
+		if (isset($params['csspath'])) {
 			$this->csspath = FCPATH.trim($params['csspath'], '/');
 		} else {
 			$this->csspath = FCPATH.trim($CI->config->item('csspath'), '/');
@@ -115,16 +115,16 @@ class Minify {
 		
 		if ($type === 'css') {
 			/* remove comments */
-        	$buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
-        
+			$buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
+			
 			/* remove tabs, spaces, newlines, etc. */
-        	$buffer = str_replace(array("\r\n","\r","\n","\t",'  ','    ','     '), '', $buffer);
-        
+			$buffer = str_replace(array("\r\n","\r","\n","\t",'  ','    ','     '), '', $buffer);
+			
 			/* remove other spaces before/after ; */
-        	$buffer = preg_replace(array('(( )+{)','({( )+)'), '{', $buffer);
-        	$buffer = preg_replace(array('(( )+})','(}( )+)','(;( )*})'), '}', $buffer);
-        	$buffer = preg_replace(array('(;( )+)','(( )+;)'), ';', $buffer);
-        	return $buffer;
+			$buffer = preg_replace(array('(( )+{)','({( )+)'), '{', $buffer);
+			$buffer = preg_replace(array('(( )+})','(}( )+)','(;( )*})'), '}', $buffer);
+			$buffer = preg_replace(array('(;( )+)','(( )+;)'), ';', $buffer);
+			return $buffer;
 		}
 		
 		return;
